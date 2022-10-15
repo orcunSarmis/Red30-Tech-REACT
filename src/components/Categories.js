@@ -1,4 +1,5 @@
-import {getCategories} from "../api";
+import { Outlet } from "react-router-dom";
+import { getCategories } from "../api";
 
 export default function Categories() {
   const categories = getCategories();
@@ -7,8 +8,11 @@ export default function Categories() {
       <h1>Session Categories</h1>
 
       <ul className="categories">
-
+        {categories.map((cat) => (
+          <li key={cat.id}>{cat.name}</li>
+        ))}
       </ul>
+      <Outlet />
     </div>
   );
 }
